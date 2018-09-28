@@ -19,12 +19,7 @@ const config = {
 class Yelp extends Component {
 
   componentWillMount() {
-    axios.get('https://api.yelp.com/v3/businesses/search', {
-      params: {
-        term: 'restaurant',
-        location: 'detroit'
-      }
-    })
+    axios.get('https://api.yelp.com/v3/businesses/search', config)
     .then(response => console.log(response))
     .catch(function(error){
       console.log(error);
