@@ -12,12 +12,10 @@ class App extends Component {
     }
   }
   getListOfRestaurant = (locations) => {
-    // console.log('getListOfRestaurant '+ locations.data.response.venues);
     this.setState(
       {
         locations : locations.data.response.venues
       });
-    // console.log('locations -> '+ this.locations);
   }
 
   render() {
