@@ -5,7 +5,7 @@ class Map extends Component {
   renderMarker(location) {
     console.log('location renderMarker '+ location.lat +" "+ location.lng)
     return( 
-      <Marker
+      <Marker key={location.address}
       position={{ lat: location.lat , lng: location.lng }}
     />);
   }
