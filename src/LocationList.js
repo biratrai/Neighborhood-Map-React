@@ -18,7 +18,7 @@ const config = {
 
 class LocationList extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     axios.get('https://api.foursquare.com/v2/venues/search', config)
     .then(response => {
       console.log(response);

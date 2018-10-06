@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
-import { withGoogleMap,GoogleMap } from 'react-google-maps';
+import { withGoogleMap,GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import MarkerWithInfoWindow from './MarkerWithInfoWindow'
 
 class Map extends Component {
-  renderMarker(venue) {
+  renderMarker(venue, isOpen) {
     console.log('location renderMarker '+ venue.location.lat +" "+ venue.location.lng)
+    // console.log("this.props.isOpen " + this.props.isOpen)
+    // console.log("venue.location.address " + venue.location.address)
     return(
-      <MarkerWithInfoWindow venue={venue} key={venue.location.address}/>
+      // <MarkerWithInfoWindow 
+      //   venue={venue} 
+      //   isOpen = {isOpen}
+      //   onToggleOpen = {onToggleOpen}
+      //   key={venue.location.address}/>
+      <Marker 
+      position={{ lat: venue.location.lat, lng: venue.location.lng }}
+      onClick={ () => this.props.onToggleOpen(venue.location.address)}
+    >
+      { 
+        this.props.isOpen === venue.location.address && <InfoWindow onCloseClick={this.props.onToggleOpen("")}>
+      </InfoWindow>}
+    </Marker>
     ); 
   }
 
@@ -20,7 +34,7 @@ class Map extends Component {
         {
           this.props.locationList.map((venue) => {
             if(venue != null){
-              return this.renderMarker(venue);
+              return this.renderMarker(venue, this.props.isOpen);
             }
           })
         }
