@@ -9,7 +9,6 @@ class App extends Component {
     super(props);
     this.state = {
       locations: Array(10).fill(null),
-      isOpen: ""
     }
   }
 
@@ -20,13 +19,6 @@ class App extends Component {
       });
   }
 
-  onToggleOpen = ( locationKey ) => {
-    console.log("onToggleOpen "+locationKey)
-    this.setState({
-      isOpen : locationKey
-    }); 
-  }
-
   render() {
     return (
       <div className="App">
@@ -35,9 +27,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to Neighborhood Map</h1>
         </header>
         <div>
-          <Map locationList = { this.state.locations }
-          onToggleOpen = { this.onToggleOpen }
-          isOpen = { this.state.isOpen }/>
+          <Map locationList = { this.state.locations }/>
           <LocationList onLoad={(locations) => this.getListOfRestaurant(locations)}/>
         </div>
       </div>
