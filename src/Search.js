@@ -5,7 +5,6 @@ class Search extends Component {
     super(props)
     this.state = {
       query: '',
-      apiReturned: true,
       filteredPlaces:null,
     }
   }
@@ -18,35 +17,41 @@ class Search extends Component {
  }
 
  render() {
-   return (
-     <div>
-    <input
-      type="text"
-      placeholder="filter by name"
-      value={this.state.query}
-      // onChange={this.filterPlaces}
-      className="query"
-      role="search"
-      aria-labelledby="text filter"
-      tabIndex={true ? "0" : "-1"}
-    />
-    {this.state.apiReturned && this.props.locationList.length > 0 ? (
-      <ul className="places-list">
-        {this.props.locationList.map((venue, id) => (
-          <div
-        >
-          {venue.location.address}
-        </div>
-        ))}
-      </ul>
-    ) : (
-      <p id="filter-error" className="empty-input">
-        No places match filter
-      </p>
+  if (this.props.apiReturned) {
+    return (
+      <div>
+        <input
+          type="text"
+          placeholder="filter by name"
+          value={this.state.query}
+          // onChange={this.filterPlaces}
+          className="query"
+          role="search"
+          aria-labelledby="text filter"
+          tabIndex={true ? "0" : "-1"}
+        />
+        {this.props.apiReturned && this.props.locationList.length > 0 ? (
+          <ul className="places-list">
+            {this.props.locationList.map((venue, id) => (
+              <div
+            >
+              {venue.location.address}
+            </div>
+            ))}
+          </ul>
+        ) : (
+          <p id="filter-error" className="empty-input">
+            No places match filter
+          </p>
+        )}
+      </div>)
+    }  else {
+      return (
+        <div className="loading-fs">
+        <h4 className="loading-message">Loading Restaurants...</h4>
+        {/* <img src={spinner} className="spinner" alt="loading indicator" /> */}
+      </div>
     )}
-  </div>
-   )
- }
-}
-
+  }
+};
 export default Search
