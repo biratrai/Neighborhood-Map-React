@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withGoogleMap,GoogleMap} from 'react-google-maps';
 import MarkerWithInfoWindow from './MarkerWithInfoWindow'
 
 class Map extends Component {
