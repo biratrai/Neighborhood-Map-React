@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Map from './Map.js';
-import LocationList from './LocationList.js'
+import {getLocationList} from './LocationList.js'
 import logo from './logo.svg';
 import './App.css';
 
@@ -18,6 +18,12 @@ class App extends Component {
       });
   }
 
+  showErrorScreen() {
+    console.log("error error");
+  }
+  componentDidMount(){
+    getLocationList(this.getListOfRestaurant)
+  }
   render() {
     return (
       <div className="App">
@@ -27,7 +33,7 @@ class App extends Component {
         </header>
         <div>
           <Map locationList = {this.state.locations}/>
-          <LocationList onLoad={(locations) => this.getListOfRestaurant(locations)}/>
+          {/* <LocationList onLoad={(locations) => this.getListOfRestaurant(locations)}/> */}
         </div>
       </div>
     );
