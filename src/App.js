@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Map from './Map.js';
 import {getLocationList} from './LocationList.js'
 import logo from './logo.svg';
+import Loader from 'react-loader-spinner'
 import './App.css';
 
 class App extends Component {
@@ -10,7 +11,8 @@ class App extends Component {
     this.state = {
       locations: Array(10).fill(null),
       hasError: false,
-      errorMsg: ""
+      errorMsg: "",
+      isLoading: true
     }
   }
 
@@ -25,7 +27,8 @@ class App extends Component {
   setLocationData = (locations) => {
     this.setState(
       {
-        locations : locations.data.response.venues
+        locations : locations.data.response.venues,
+        isLoading: false
       });
   }
 
@@ -33,7 +36,8 @@ class App extends Component {
     this.setState(
       {
         hasError : true,
-        errorMsg: error
+        errorMsg: error,
+        isLoading: false
       });
   }
 
@@ -56,6 +60,13 @@ class App extends Component {
         </header>
         
         <div>
+          {this.state.isLoading &&  <Loader 
+              type="Circles"
+              color="#00BFFF"
+              height="200"	
+              width="200"
+            />   
+          }
           {content}
         </div>
       </div>
