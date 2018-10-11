@@ -9,31 +9,54 @@ class App extends Component {
     super(props);
     this.state = {
       locations: Array(10).fill(null),
+      hasError: false,
+      errorMsg: ""
     }
   }
-  getListOfRestaurant = (locations) => {
+
+  getData = (response) => {
+    if(response.data !== undefined){
+      return this.setLocationData(response);
+    } else {
+      return this.setErrorData(response);
+    }
+  }
+
+  setLocationData = (locations) => {
     this.setState(
       {
         locations : locations.data.response.venues
       });
   }
 
-  showErrorScreen() {
-    console.log("error error");
+  setErrorData = (error) => {
+    this.setState(
+      {
+        hasError : true,
+        errorMsg: error
+      });
   }
+
   componentDidMount(){
-    getLocationList(this.getListOfRestaurant)
+    getLocationList(this.getData)
   }
+
   render() {
+    let content;
+    if(this.state.hasError){
+      content = <div className="error" >{this.state.errorMsg}</div>
+    } else {
+      content = <Map locationList = {this.state.locations}/>
+    }
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Neighborhood Map</h1>
         </header>
+        
         <div>
-          <Map locationList = {this.state.locations}/>
-          {/* <LocationList onLoad={(locations) => this.getListOfRestaurant(locations)}/> */}
+          {content}
         </div>
       </div>
     );
