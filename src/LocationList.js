@@ -3,7 +3,6 @@ import axios from 'axios';
 const config = {
   headers: {
     'Content-Type': 'application/json'
-    // 'Authorization': 'Bearer gr2wwg-XsG_mpTRK3PcgsHPaPPmeSa-r9JKLq3HKJSIJ5hvojQsZjxhgqJos4NJND6Tu9LcKXeoAwRdnu3VBX6f5Shs06FuRMKCM13UD1pFXIF8roc_Ypzy8LWqtW3Yx'
   },
   params: {
     query: 'restaurant',
@@ -15,13 +14,14 @@ const config = {
   }
 };
 
-export const getLocationList = (props) => {
+export const getLocationList = (getData) => {
   axios.get('https://api.foursquare.com/v2/venues/search', config)
   .then(response => {
     console.log(response);
-    this.props.onLoad(response);
+    getData(response);
   })
   .catch(function(error){
     console.log(error);
+    getData(error.message);
   });
 }
