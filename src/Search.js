@@ -20,22 +20,12 @@ class Search extends Component {
   if (this.props.apiReturned) {
     return (
       <div>
-        <input
-          type="text"
-          placeholder="filter by name"
-          value={this.state.query}
-          // onChange={this.filterPlaces}
-          className="query"
-          role="search"
-          aria-labelledby="text filter"
-          tabIndex={true ? "0" : "-1"}
-        />
-        {this.props.apiReturned && this.props.locationList.length > 0 ? (
+        { this.props.apiReturned && this.props.locationList.length > 0 ? (
           <ul className="places-list">
             {this.props.locationList.map((venue, id) => (
               <div
             >
-              {venue.location.address}
+              { venue.location.address }
             </div>
             ))}
           </ul>
