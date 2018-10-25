@@ -4,34 +4,26 @@ import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
 
-const FilterItemList = () => { 
+// Stateless functional Component
+const FilterItemList = ({ locations } ) => { 
     return (
-    <List>
-        <div>
+        <List>
             <ListItem button>
-            <TextField
-                id="standard-search"
-                label="Filter locations"
-                type="search"
-                //   className={classes.textField}
-                //   margin="normal"
-                />
+                <TextField
+                    id="standard-search"
+                    label="Filter locations"
+                    type="search"
+                    />
             </ListItem>    
-            <ListItem button onClick={alert}>
-            <ListItemText primary="Inbox" />
-            </ListItem>
-            <ListItem button>
-            <ListItemText primary="Starred" />
-            </ListItem>
-            <ListItem button>
-            <ListItemText primary="Send mail" />
-            </ListItem>
-            <ListItem button>
-                <ListItemText primary="Trash" />
-            </ListItem>
-        </div>
-    </List>
-    )
+            { locations.map((venue) =>
+                { 
+                    return <ListItem button onClick={alert}>
+                                <ListItemText primary={venue.name} />
+                            </ListItem>
+                }
+            )}
+        </List>
+    );
 }
 
 export default FilterItemList;
