@@ -66,6 +66,7 @@ class AppFrame extends React.Component {
 
   getData = (response) => {
     if(response.data !== undefined){
+      console.log("seltLocationDATa")
       return this.setLocationData(response);
     } else {
       return this.setErrorData(response);
@@ -156,7 +157,7 @@ class AppFrame extends React.Component {
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <App hasError={ this.state.hasError } locations= { this.state.locations } 
-            apiReturned= { this.state.ßapiReturned} isLoading= { this.state.isLoading }/>
+            apiReturned= { this.state.apiReturned} isLoading= { this.state.isLoading }/>
         </main>
       </div>
     );
