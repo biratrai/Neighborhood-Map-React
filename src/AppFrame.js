@@ -11,6 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import App from './App.js';
 import FilterItemList from './FilterItemList'
+import { getLocationList } from './LocationList.js'
 
 const drawerWidth = 240;
 
@@ -51,9 +52,47 @@ const styles = theme => ({
 });
 
 class AppFrame extends React.Component {
-  state = {
-    mobileOpen: false,
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      locations: [],
+      apiReturned: false,
+      hasError: false,
+      errorMsg: "",
+      isLoading: true,
+      mobileOpen: false
+    }
+  }
+
+  getData = (response) => {
+    if(response.data !== undefined){
+      return this.setLocationData(response);
+    } else {
+      return this.setErrorData(response);
+    }
+  }
+
+  setLocationData = (response) => {
+    this.setState(
+      {
+        locations : response.data.response.venues,
+        apiReturned : true,
+        isLoading: false
+      });
+  }
+
+  setErrorData = (error) => {
+    this.setState(
+      {
+        hasError : true,
+        errorMsg: error,
+        isLoading: false
+      });
+  }
+
+  componentDidMount(){
+    getLocationList(this.getData)
+  }
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
@@ -100,7 +139,7 @@ class AppFrame extends React.Component {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            {drawer}
+            { drawer }
           </Drawer>
         </Hidden>
         <Hidden smDown implementation="css">
@@ -116,7 +155,7 @@ class AppFrame extends React.Component {
         </Hidden>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <App/>
+          <App hasError={ this.state.hasError } locations= { this.state.locations } apiReturned= { this.state.ßapiReturned }/>
         </main>
       </div>
     );
