@@ -18,7 +18,7 @@ const drawerWidth = 240;
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 440,
+    height: 800,
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
@@ -155,7 +155,8 @@ class AppFrame extends React.Component {
         </Hidden>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <App hasError={ this.state.hasError } locations= { this.state.locations } apiReturned= { this.state.ßapiReturned }/>
+          <App hasError={ this.state.hasError } locations= { this.state.locations } 
+            apiReturned= { this.state.ßapiReturned} isLoading= { this.state.isLoading }/>
         </main>
       </div>
     );
