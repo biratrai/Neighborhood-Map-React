@@ -14,20 +14,20 @@ class App extends Component {
     } else {
       content = <div>
         <section>
-          <Search 
+          {/* <Search 
             locationList= { this.props.locations }
             apiReturned = { this.props.apiReturned }
-          />
+          /> */}
         </section>
         <Map locationList = { this.props.locations }/>
       </div>
     }
     return (
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Neighborhood Map</h1>
-        </header>
+        </header> */}
         { this.props.isLoading &&  <Loader 
             type="Circles"
             color="#00BFFF"
