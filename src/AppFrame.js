@@ -105,7 +105,7 @@ class AppFrame extends React.Component {
       <div>
         <div className={ classes.toolbar } />
         <Divider />
-        <FilterItemList/>
+        <FilterItemList locations={ this.state.locations }/>
       </div>
     );
 
