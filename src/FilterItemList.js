@@ -23,7 +23,7 @@ class FilterItemList extends Component {
                 </ListItem>    
                 { this.props.locations.map((venue) =>
                     { 
-                        return <ListItem button onClick={alert}>
+                        return <ListItem button onClick={alert} key={venue.id}>
                                     <ListItemText primary={venue.name} />
                                 </ListItem>
                     }
