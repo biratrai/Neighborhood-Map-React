@@ -49,6 +49,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
   },
+  typography: {
+    useNextVariants: true,
+  },
 });
 
 class AppFrame extends React.Component {
@@ -95,6 +98,9 @@ class AppFrame extends React.Component {
     getLocationList(this.getData)
   }
 
+  filterLocation = (text) => {
+    console.log("userInput "+ text)
+  }
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
@@ -106,7 +112,7 @@ class AppFrame extends React.Component {
       <div>
         <div className={ classes.toolbar } />
         <Divider />
-        <FilterItemList locations={ this.state.locations }/>
+        <FilterItemList locations={ this.state.locations } filterLocation={ this.filterLocation }/>
       </div>
     );
 
