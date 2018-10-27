@@ -63,7 +63,8 @@ class AppFrame extends React.Component {
       hasError: false,
       errorMsg: "",
       isLoading: true,
-      mobileOpen: false
+      mobileOpen: false,
+      filteredLocations: []
     }
   }
 
@@ -81,7 +82,8 @@ class AppFrame extends React.Component {
       {
         locations : response.data.response.venues,
         apiReturned : true,
-        isLoading: false
+        isLoading: false,
+        filteredLocations: response.data.response.venues
       });
   }
 
@@ -100,7 +102,22 @@ class AppFrame extends React.Component {
 
   filterLocation = (text) => {
     console.log("userInput "+ text)
+    const loc = this.state.locations
+    let filter = 
+                loc.filter(venue => { 
+                      venue.name.startsWith(text)
+                      console.log("venue "+venue.name.startsWith(text))
+                    })
+                    
+    this.setState(
+      {
+        filteredLocations: filter
+      }
+    )
+    console.log("FilteredLocations "+ this.filter)
+    console.log("FilteredLocations "+ this.state.locations)
   }
+
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
@@ -112,7 +129,7 @@ class AppFrame extends React.Component {
       <div>
         <div className={ classes.toolbar } />
         <Divider />
-        <FilterItemList locations={ this.state.locations } filterLocation={ this.filterLocation }/>
+        <FilterItemList locations={ this.state.filteredLocations } filterLocation={ this.filterLocation }/>
       </div>
     );
 
@@ -162,7 +179,7 @@ class AppFrame extends React.Component {
         </Hidden>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <App hasError={ this.state.hasError } locations= { this.state.locations } 
+          <App hasError={ this.state.hasError } locations= { this.state.filteredLocations } 
             apiReturned= { this.state.apiReturned} isLoading= { this.state.isLoading }/>
         </main>
       </div>
