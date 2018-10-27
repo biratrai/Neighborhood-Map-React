@@ -103,7 +103,7 @@ class AppFrame extends React.Component {
   filterLocation = (text) => {
     console.log("userInput "+ text)
     const loc = this.state.locations
-    let filter = 
+    let filterLoc = 
                 loc.filter(venue => { 
                       venue.name.startsWith(text)
                       console.log("venue "+venue.name.startsWith(text))
@@ -111,10 +111,10 @@ class AppFrame extends React.Component {
                     
     this.setState(
       {
-        filteredLocations: filter
+        filteredLocations: filterLoc
       }
     )
-    console.log("FilteredLocations "+ this.filter)
+    console.log("FilteredLocations "+ filterLoc)
     console.log("FilteredLocations "+ this.state.locations)
   }
 
