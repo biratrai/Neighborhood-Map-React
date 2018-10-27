@@ -100,22 +100,14 @@ class AppFrame extends React.Component {
     getLocationList(this.getData)
   }
 
-  filterLocation = (text) => {
-    console.log("userInput "+ text)
-    const loc = this.state.locations
-    let filterLoc = 
-                loc.filter(venue => { 
-                      venue.name.startsWith(text)
-                      console.log("venue "+venue.name.startsWith(text))
-                    })
-                    
+  filterLocation = (text) => {                    
     this.setState(
       {
-        filteredLocations: filterLoc
+        filteredLocations: text? this.state.locations.filter(venue => { 
+                              return venue.name.startsWith(text) 
+        }) : this.state.locations
       }
     )
-    console.log("FilteredLocations "+ filterLoc)
-    console.log("FilteredLocations "+ this.state.locations)
   }
 
   handleDrawerToggle = () => {
