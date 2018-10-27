@@ -28,7 +28,7 @@ class Map extends Component {
   }
 
   render() {
-    const GoogleMapExample = withGoogleMap(props => (
+    const GoogleMapBox = withGoogleMap(props => (
       
        <GoogleMap
          defaultCenter = { { lat: 40.756795, lng: -73.954298 } }
@@ -48,10 +48,12 @@ class Map extends Component {
 
     return(
        <div>
-         <GoogleMapExample
+         <GoogleMapBox
            containerElement={ <div style={{ height: `500px`}} /> }
            mapElement={ <div style={{ height: `100%` }} /> }
-         />
+         >
+
+         </GoogleMapBox>
         </div>
     );
  
