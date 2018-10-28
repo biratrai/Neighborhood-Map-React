@@ -12,6 +12,7 @@ render(){
         <Marker 
       position={{ lat: this.props.venue.location.lat, lng: this.props.venue.location.lng }}
       onClick={ () => this.props.onToggleOpen(this.props.venue.location.address)}
+      animation= {this.props.shouldAnimate? this.props.animation: null}
     >
       { 
         this.props.isOpen === this.props.venue.location.address && <InfoWindow >
