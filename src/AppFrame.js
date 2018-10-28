@@ -66,8 +66,7 @@ class AppFrame extends React.Component {
       mobileOpen: false,
       filteredLocations: [],
       shouldAnimate: false,
-      currentSelected: 0,
-      isOpen: ""
+      currentSelected: ""
     }
   }
 
@@ -114,15 +113,14 @@ class AppFrame extends React.Component {
   }
 
   animateMarker = (animate, venueId) => {
-    this.setState({ shouldAnimate: animate, currentSelected: venueId })
+    this.setState({ shouldAnimate: animate})
     setTimeout(() => this.setState({ shouldAnimate: false }), 2100)
     this.onToggleOpen( venueId )
   }
 
   onToggleOpen = ( venueId ) => {
-    console.log("toogle "+venueId)
     this.setState({
-      isOpen : venueId
+      currentSelected : venueId
     }); 
   }
 
@@ -197,7 +195,7 @@ class AppFrame extends React.Component {
             shouldAnimate={ this.state.shouldAnimate } 
             currentSelected={ this.state.currentSelected }
             onToggleOpen={ this.onToggleOpen }
-            isOpen={ this.state.isOpen }/>
+          />
         </main>
       </div>
     );
