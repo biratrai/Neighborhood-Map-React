@@ -11,9 +11,9 @@ const GoogleMapBox = withGoogleMap(props => (
    {
      props.locationList.map((venue) => {
        if(venue != null){
-         return props.renderMarker(venue, props.shouldAnimate, props.currentSelected, props.isOpen, props.onToggleOpen);
+        return props.renderMarker(venue, props.shouldAnimate, props.currentSelected, props.isOpen, props.onToggleOpen);
        } else {
-         return null;
+        return null;
        }
      })
    }
@@ -21,18 +21,6 @@ const GoogleMapBox = withGoogleMap(props => (
 ));
 
 class Map extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      isOpen: ""
-    }
-  }
-
-  onToggleOpen = ( locationKey ) => {
-    this.setState({
-      isOpen : locationKey
-    }); 
-  }
 
   renderMarker(venue, shouldAnimate, currentSelected, isOpen, onToggleOpen ) {
     return(
@@ -47,7 +35,7 @@ class Map extends Component {
     ); 
   }
 
-  render() {
+  render() {     
     return(
        <div>
          <GoogleMapBox
@@ -57,10 +45,9 @@ class Map extends Component {
            shouldAnimate={ this.props.shouldAnimate }
            currentSelected={ this.props.currentSelected }
            renderMarker={ this.renderMarker }
-           isOpen={ this.state.isOpen }
-           onToggleOpen={ this.onToggleOpen }
+           isOpen={ this.props.isOpen }
+           onToggleOpen={ this.props.onToggleOpen }
          >
-
          </GoogleMapBox>
         </div>
     );
