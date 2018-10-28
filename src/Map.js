@@ -45,7 +45,6 @@ class Map extends Component {
            shouldAnimate={ this.props.shouldAnimate }
            currentSelected={ this.props.currentSelected }
            renderMarker={ this.renderMarker }
-           isOpen={ this.props.isOpen }
            onToggleOpen={ this.props.onToggleOpen }
          >
          </GoogleMapBox>
