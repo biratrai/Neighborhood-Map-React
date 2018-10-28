@@ -16,7 +16,7 @@ render(){
       animation= { this.props.currentSelected === this.props.venue.id && this.props.shouldAnimate? this.props.animation: null }
     >
       { 
-        (this.props.isOpen === this.props.venue.id) && <InfoWindow >
+        (this.props.currentSelected === this.props.venue.id) && <InfoWindow >
         <div onClick={() => this.props.onToggleOpen("")}>
           <h3>{this.props.venue.name}</h3>
           <div>{this.props.venue.location.address}</div>
