@@ -13,7 +13,9 @@ class App extends Component {
       content = <div>
         <Map locationList = { this.props.locations } 
           shouldAnimate = { this.props.shouldAnimate } 
-          currentSelected={ this.props.currentSelected }/>
+          currentSelected={ this.props.currentSelected }
+          onToggleOpen={ this.props.onToggleOpen }
+          isOpen= { this.props.isOpen }/>
       </div>
     }
     return (
