@@ -11,7 +11,9 @@ class App extends Component {
       content = <div className="error" >{ this.props.errorMsg }</div>
     } else {
       content = <div>
-        <Map locationList = { this.props.locations } shouldAnimate = { this.props.shouldAnimate } currentSelected={ this.props.currentSelected }/>
+        <Map locationList = { this.props.locations } 
+          shouldAnimate = { this.props.shouldAnimate } 
+          currentSelected={ this.props.currentSelected }/>
       </div>
     }
     return (
