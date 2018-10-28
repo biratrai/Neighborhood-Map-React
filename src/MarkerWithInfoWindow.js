@@ -7,12 +7,12 @@ const {
 class MarkerWithInfoWindow extends Component {
 
 render(){
-  console.log(this.props.venue.categories[0].icon.prefix+32+this.props.venue.categories[0].icon.suffix)
+  // console.log(this.props.venue.categories[0].icon.prefix+32+this.props.venue.categories[0].icon.suffix)
   return(
-        <Marker 
+    <Marker 
       position={{ lat: this.props.venue.location.lat, lng: this.props.venue.location.lng }}
       onClick={ () => this.props.onToggleOpen(this.props.venue.location.address)}
-      animation= {this.props.shouldAnimate? this.props.animation: null}
+      animation= { this.props.currentSelected === this.props.venue.id && this.props.shouldAnimate? this.props.animation: null }
     >
       { 
         this.props.isOpen === this.props.venue.location.address && <InfoWindow >
