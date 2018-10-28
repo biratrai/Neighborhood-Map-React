@@ -66,7 +66,8 @@ class AppFrame extends React.Component {
       mobileOpen: false,
       filteredLocations: [],
       shouldAnimate: false,
-      currentSelected: 0
+      currentSelected: 0,
+      isOpen: ""
     }
   }
 
@@ -115,6 +116,14 @@ class AppFrame extends React.Component {
   animateMarker = (animate, venueId) => {
     this.setState({ shouldAnimate: animate, currentSelected: venueId })
     setTimeout(() => this.setState({ shouldAnimate: false }), 2100)
+    this.onToggleOpen( venueId )
+  }
+
+  onToggleOpen = ( venueId ) => {
+    console.log("toogle "+venueId)
+    this.setState({
+      isOpen : venueId
+    }); 
   }
 
   handleDrawerToggle = () => {
@@ -179,11 +188,16 @@ class AppFrame extends React.Component {
             { drawer }
           </Drawer>
         </Hidden>
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
-          <App hasError={ this.state.hasError } locations= { this.state.filteredLocations } 
-            apiReturned= { this.state.apiReturned} isLoading= { this.state.isLoading }
-            shouldAnimate={ this.state.shouldAnimate } currentSelected={ this.state.currentSelected }/>
+        <main className={ classes.content }>
+          <div className={ classes.toolbar } />
+          <App hasError={ this.state.hasError } 
+            locations= { this.state.filteredLocations } 
+            apiReturned= { this.state.apiReturned} 
+            isLoading= { this.state.isLoading }
+            shouldAnimate={ this.state.shouldAnimate } 
+            currentSelected={ this.state.currentSelected }
+            onToggleOpen={ this.onToggleOpen }
+            isOpen={ this.state.isOpen }/>
         </main>
       </div>
     );
