@@ -16,15 +16,16 @@ class Map extends Component {
     }); 
   }
 
-  renderMarker(venue, shouldAnimate) {
+  renderMarker(venue, shouldAnimate, currentSelected) {
     return(
       <MarkerWithInfoWindow 
-        venue={venue} 
-        isOpen = {this.state.isOpen}
-        onToggleOpen = {this.onToggleOpen}
-        key={venue.location.address}
-        shouldAnimate={shouldAnimate}
-        animation={window.google.maps.Animation.BOUNCE}/>
+        venue={ venue } 
+        isOpen = { this.state.isOpen }
+        onToggleOpen = { this.onToggleOpen }
+        key={ venue.location.address }
+        shouldAnimate={ shouldAnimate }
+        animation={ window.google.maps.Animation.BOUNCE }
+        currentSelected= { currentSelected }/>
     ); 
   }
 
@@ -38,7 +39,7 @@ class Map extends Component {
         {
           this.props.locationList.map((venue) => {
             if(venue != null){
-              return this.renderMarker(venue, this.props.shouldAnimate);
+              return this.renderMarker(venue, this.props.shouldAnimate, this.props.currentSelected);
             } else {
               return null;
             }
