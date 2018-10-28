@@ -65,7 +65,8 @@ class AppFrame extends React.Component {
       isLoading: true,
       mobileOpen: false,
       filteredLocations: [],
-      shouldAnimate: false
+      shouldAnimate: false,
+      currentSelected: 0
     }
   }
 
@@ -111,10 +112,9 @@ class AppFrame extends React.Component {
     )
   }
 
-  animateMarker = (animate) => {
-    console.log("animatemarker");
-    this.setState({ shouldAnimate: animate })
-    setTimeout(() => this.animateMarker(false), 2100)
+  animateMarker = (animate, venueId) => {
+    this.setState({ shouldAnimate: animate, currentSelected: venueId })
+    setTimeout(() => this.setState({ shouldAnimate: false }), 2100)
   }
 
   handleDrawerToggle = () => {
@@ -183,7 +183,7 @@ class AppFrame extends React.Component {
           <div className={classes.toolbar} />
           <App hasError={ this.state.hasError } locations= { this.state.filteredLocations } 
             apiReturned= { this.state.apiReturned} isLoading= { this.state.isLoading }
-            shouldAnimate={ this.state.shouldAnimate }/>
+            shouldAnimate={ this.state.shouldAnimate } currentSelected={ this.state.currentSelected }/>
         </main>
       </div>
     );
