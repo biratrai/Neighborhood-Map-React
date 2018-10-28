@@ -64,7 +64,8 @@ class AppFrame extends React.Component {
       errorMsg: "",
       isLoading: true,
       mobileOpen: false,
-      filteredLocations: []
+      filteredLocations: [],
+      shouldAnimate: false
     }
   }
 
@@ -110,6 +111,12 @@ class AppFrame extends React.Component {
     )
   }
 
+  animateMarker = (animate) => {
+    console.log("animatemarker");
+    this.setState({ shouldAnimate: animate })
+    setTimeout(() => this.animateMarker(false), 2100)
+  }
+
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
@@ -121,7 +128,10 @@ class AppFrame extends React.Component {
       <div>
         <div className={ classes.toolbar } />
         <Divider />
-        <FilterItemList locations={ this.state.filteredLocations } filterLocation={ this.filterLocation }/>
+        <FilterItemList locations={ this.state.filteredLocations } 
+          filterLocation={ this.filterLocation }
+          shouldAnimate={ this.state.shouldAnimate}
+          animateMarker={ this.animateMarker }/>
       </div>
     );
 
@@ -172,7 +182,8 @@ class AppFrame extends React.Component {
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <App hasError={ this.state.hasError } locations= { this.state.filteredLocations } 
-            apiReturned= { this.state.apiReturned} isLoading= { this.state.isLoading }/>
+            apiReturned= { this.state.apiReturned} isLoading= { this.state.isLoading }
+            shouldAnimate={ this.state.shouldAnimate }/>
         </main>
       </div>
     );
