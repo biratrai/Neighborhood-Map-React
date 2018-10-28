@@ -11,19 +11,20 @@ class Map extends Component {
   }
 
   onToggleOpen = ( locationKey ) => {
-    console.log("onToggleOpen "+locationKey)
     this.setState({
       isOpen : locationKey
     }); 
   }
 
-  renderMarker(venue) {
+  renderMarker(venue, shouldAnimate) {
     return(
       <MarkerWithInfoWindow 
         venue={venue} 
         isOpen = {this.state.isOpen}
         onToggleOpen = {this.onToggleOpen}
-        key={venue.location.address}/>
+        key={venue.location.address}
+        shouldAnimate={shouldAnimate}
+        animation={window.google.maps.Animation.BOUNCE}/>
     ); 
   }
 
@@ -37,7 +38,7 @@ class Map extends Component {
         {
           this.props.locationList.map((venue) => {
             if(venue != null){
-              return this.renderMarker(venue);
+              return this.renderMarker(venue, this.props.shouldAnimate);
             } else {
               return null;
             }
