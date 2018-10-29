@@ -12,6 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import App from './App.js';
 import FilterItemList from './FilterItemList'
 import { getLocationList } from './LocationList.js'
+import SearchLocation from './SearchLocation.js';
 
 const drawerWidth = 240;
 
@@ -103,7 +104,11 @@ class AppFrame extends React.Component {
 
   componentDidMount(){
     console.log("mount "+ this.state.geometry.lat)
-    getLocationList(this.getData)
+    getLocationList(this.getData, "manhattan")
+  }
+
+  searchLocation = (text) => {
+      getLocationList(this.getData, text)
   }
 
   filterLocation = (text) => {                    
@@ -192,6 +197,7 @@ class AppFrame extends React.Component {
         </Hidden>
         <main className={ classes.content }>
           <div className={ classes.toolbar } />
+          <SearchLocation searchLocation={ this.searchLocation }/>
           <App hasError={ this.state.hasError } 
             locations= { this.state.filteredLocations } 
             apiReturned= { this.state.apiReturned} 
