@@ -18,11 +18,10 @@ export const getLocationList = (getData, location) => {
   config.params.near = location;
   axios.get('https://api.foursquare.com/v2/venues/search', config)
   .then(response => {
-    console.log(response);
     getData(response);
   })
   .catch(function(error){
     console.log(error);
-    getData(error.message);
+    getData(error);
   });
 }
