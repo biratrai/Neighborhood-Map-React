@@ -8,7 +8,10 @@ class App extends Component {
   render() {
     let content;
     if( this.props.hasError ){
-      content = <div className="error" >{ this.props.errorMsg }</div>
+      content = <div className="error" >
+      <h3>{ this.props.errorMsg.message }</h3>
+      <p>{ this.props.errorMsg.response.data.meta.errorDetail }</p>
+      </div>
     } else {
       content = <div>
         <Map locationList = { this.props.locations } 
