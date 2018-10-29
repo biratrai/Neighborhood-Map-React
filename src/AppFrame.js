@@ -86,7 +86,9 @@ class AppFrame extends React.Component {
     this.setState(
       {
         locations : response.data.response.venues,
+        hasError : false,
         apiReturned : true,
+        errorMsg: "",
         isLoading: false,
         filteredLocations: response.data.response.venues,
         geometry: response.data.response.geocode.feature.geometry.center
@@ -206,6 +208,7 @@ class AppFrame extends React.Component {
             currentSelected={ this.state.currentSelected }
             onToggleOpen={ this.onToggleOpen }
             geometry={ this.state.geometry }
+            errorMsg={ this.state.errorMsg }
           />
         </main>
       </div>
