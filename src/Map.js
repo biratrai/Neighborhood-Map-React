@@ -19,7 +19,6 @@ class Map extends Component {
 
   render() {  
     return(
-       
          <GoogleMapBox
            containerElement={ <div style={{ height: `500px`}} /> }
            mapElement={ <div style={{ height: `100%` }} /> }
@@ -33,8 +32,7 @@ class Map extends Component {
          </GoogleMapBox>
        
     );
- 
-    }
+ }
 };
 
 const GoogleMapBox = withGoogleMap(props => (
