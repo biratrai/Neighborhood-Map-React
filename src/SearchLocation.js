@@ -8,7 +8,9 @@ import { DebounceInput } from 'react-debounce-input';
 class SearchLocation extends Component {
     
     handleChange = searchLocation => event => {
-        searchLocation(event.target.value)
+        console.log("event "+event.target.value)
+        if(event.target.value)
+            searchLocation(event.target.value)
     };
 
     render(){
@@ -16,8 +18,8 @@ class SearchLocation extends Component {
             <List>
                 <ListItem button>
                     <DebounceInput
-                        minLength= {2}
-                        debounceTimeout={300}
+                        minLength= { 2 }
+                        debounceTimeout={ 400 }
                         placeholder="Search Restaurants"
                         element="input" 
                         style={{flex: "1", fontSize: "1.25em"}}
