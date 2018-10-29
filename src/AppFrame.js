@@ -127,6 +127,7 @@ class AppFrame extends React.Component {
     this.setState({ shouldAnimate: animate})
     setTimeout(() => this.setState({ shouldAnimate: false }), 2100)
     this.onToggleOpen( venueId )
+    this.handleDrawerToggle()
   }
 
   onToggleOpen = ( venueId ) => {
