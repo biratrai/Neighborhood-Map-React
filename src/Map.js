@@ -1,24 +1,6 @@
 import React, { Component } from 'react';
-import { withGoogleMap,GoogleMap} from 'react-google-maps';
+import { withGoogleMap, GoogleMap } from 'react-google-maps';
 import MarkerWithInfoWindow from './MarkerWithInfoWindow'
-
-const GoogleMapBox = withGoogleMap(props => (
-      
-  <GoogleMap
-    defaultCenter = { { lat: 40.756795, lng: -73.954298 } }
-    defaultZoom = { 13 }
-   >
-   {
-     props.locationList.map((venue) => {
-       if(venue != null){
-        return props.renderMarker(venue, props.shouldAnimate, props.currentSelected, props.isOpen, props.onToggleOpen);
-       } else {
-        return null;
-       }
-     })
-   }
-  </GoogleMap>
-));
 
 class Map extends Component {
 
@@ -35,9 +17,9 @@ class Map extends Component {
     ); 
   }
 
-  render() {     
+  render() {  
     return(
-       <div>
+       
          <GoogleMapBox
            containerElement={ <div style={{ height: `500px`}} /> }
            mapElement={ <div style={{ height: `100%` }} /> }
@@ -46,12 +28,30 @@ class Map extends Component {
            currentSelected={ this.props.currentSelected }
            renderMarker={ this.renderMarker }
            onToggleOpen={ this.props.onToggleOpen }
+           geometry={ this.props.geometry }
          >
          </GoogleMapBox>
-        </div>
+       
     );
  
     }
 };
+
+const GoogleMapBox = withGoogleMap(props => (
+  <GoogleMap
+    center = { { lat: props.geometry.lat, lng: props.geometry.lng } }
+    defaultZoom = { 13 }
+   >
+   {
+     props.locationList.map((venue) => {
+       if(venue != null){
+        return props.renderMarker(venue, props.shouldAnimate, props.currentSelected, props.isOpen, props.onToggleOpen);
+       } else {
+        return null;
+       }
+     })
+   }
+  </GoogleMap>
+));
 
 export default Map;

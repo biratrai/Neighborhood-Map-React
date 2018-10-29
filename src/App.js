@@ -15,6 +15,7 @@ class App extends Component {
           shouldAnimate = { this.props.shouldAnimate } 
           currentSelected={ this.props.currentSelected }
           onToggleOpen={ this.props.onToggleOpen }
+          geometry={ this.props.geometry }
           />
       </div>
     }

@@ -66,7 +66,8 @@ class AppFrame extends React.Component {
       mobileOpen: false,
       filteredLocations: [],
       shouldAnimate: false,
-      currentSelected: ""
+      currentSelected: "",
+      geometry: { lat: 0.0, lng:0.0 }
     }
   }
 
@@ -80,12 +81,14 @@ class AppFrame extends React.Component {
   }
 
   setLocationData = (response) => {
+    console.log("respone => "+response.data.response.geocode.feature.geometry.center.lat)
     this.setState(
       {
         locations : response.data.response.venues,
         apiReturned : true,
         isLoading: false,
-        filteredLocations: response.data.response.venues
+        filteredLocations: response.data.response.venues,
+        geometry: response.data.response.geocode.feature.geometry.center
       });
   }
 
@@ -99,6 +102,7 @@ class AppFrame extends React.Component {
   }
 
   componentDidMount(){
+    console.log("mount "+ this.state.geometry.lat)
     getLocationList(this.getData)
   }
 
@@ -195,6 +199,7 @@ class AppFrame extends React.Component {
             shouldAnimate={ this.state.shouldAnimate } 
             currentSelected={ this.state.currentSelected }
             onToggleOpen={ this.onToggleOpen }
+            geometry={ this.state.geometry }
           />
         </main>
       </div>
