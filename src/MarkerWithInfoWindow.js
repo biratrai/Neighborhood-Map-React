@@ -7,8 +7,6 @@ const {
 class MarkerWithInfoWindow extends Component {
 
 render(){
-  // console.log(this.props.venue.categories[0].icon.prefix+32+this.props.venue.categories[0].icon.suffix)
-  console.log("render "+ this.props.venue.categories.name)
   return(
     <Marker 
       position={{ lat: this.props.venue.location.lat, lng: this.props.venue.location.lng }}
