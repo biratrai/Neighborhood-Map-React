@@ -11,6 +11,7 @@ class App extends Component {
       content = <div className="error" >
       <h3>{ this.props.errorMsg.message }</h3>
       <p>{ this.props.errorMsg.response.data.meta.errorDetail }</p>
+      <p>{ "Please search again!" }</p>
       </div>
     } else {
       content = <div>
