@@ -4,6 +4,7 @@ import MarkerWithInfoWindow from './MarkerWithInfoWindow'
 
 class Map extends Component {
 
+  // Function to get the MarkerWithInfoWindow component
   renderMarker(venue, shouldAnimate, currentSelected, isOpen, onToggleOpen ) {
     return(
       <MarkerWithInfoWindow 
@@ -35,6 +36,7 @@ class Map extends Component {
  }
 };
 
+// Function to get the GoogleMap Component
 const GoogleMapBox = withGoogleMap(props => (
   <GoogleMap
     center = { { lat: props.geometry.lat, lng: props.geometry.lng } }
