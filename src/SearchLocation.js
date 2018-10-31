@@ -20,7 +20,7 @@ class SearchLocation extends Component {
                     <DebounceInput
                         minLength= { 2 }
                         debounceTimeout={ 400 }
-                        placeholder="Search Restaurants by city name"
+                        placeholder="Search by city name"
                         element="input" 
                         style={{flex: "1", fontSize: "1.25em"}}
                         onChange={ this.handleChange(this.props.searchLocation) }
