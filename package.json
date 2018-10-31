@@ -15,7 +15,8 @@
     "react-google-maps": "^9.4.5",
     "react-loader-spinner": "^2.0.6",
     "react-scripts": "1.1.5",
-    "react-spinners": "^0.4.7"
+    "react-spinners": "^0.4.7",
+    "serve": "^10.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
