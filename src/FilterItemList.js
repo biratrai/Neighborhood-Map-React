@@ -4,33 +4,34 @@ import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
 
-class FilterItemList extends Component {
+// Stateless functional Component
+const FilterItemList = (props) => {
     
-    handleChange = filterLocation => event => {
+    // Function to handle the event change
+    const handleChange = filterLocation => event => {
         filterLocation(event.target.value)
     };
 
-    render(){
-        return (
-            <List>
-                <ListItem button>
-                    <TextField
-                        id="standard-search"
-                        label="Filter locations"
-                        type="search"
-                        onChange={ this.handleChange(this.props.filterLocation) }
-                        />
-                </ListItem>    
-                { this.props.locations.map((venue) =>
-                    { 
-                        return <ListItem button onClick={ () => this.props.animateMarker(true, venue.id) } key={venue.id}>
-                                    <ListItemText primary={venue.name} />
-                                </ListItem>
-                    }
-                )}
-            </List>
-        );
-    }
+    return (
+        // List of restaurants
+        <List>
+            <ListItem button>
+                <TextField
+                    id="standard-search"
+                    label="Filter locations"
+                    type="search"
+                    onChange={ handleChange(props.filterLocation) }
+                    />
+            </ListItem>    
+            { props.locations.map((venue) =>
+                {   // Return list item; whose onClick animates the marker
+                    return <ListItem button onClick={ () => props.animateMarker(true, venue.id) } key={venue.id}>
+                                <ListItemText primary={venue.name} />
+                            </ListItem>
+                }
+            )}
+        </List>
+    );
 }
 
 export default FilterItemList;
