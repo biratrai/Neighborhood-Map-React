@@ -204,7 +204,8 @@ class AppFrame extends React.Component {
             <SearchLocation searchLocation={ this.searchLocation }/>
           }
           
-          <App hasError={ this.state.hasError } 
+          <App 
+            hasError={ this.state.hasError } 
             locations= { this.state.filteredLocations } 
             apiReturned= { this.state.apiReturned} 
             isLoading= { this.state.isLoading }
