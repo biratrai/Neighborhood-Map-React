@@ -15,7 +15,7 @@ render(){
     >
       { 
         (this.props.currentSelected === this.props.venue.id) && <InfoWindow >
-        <div onClick={() => this.props.onToggleOpen("")}>
+        <div onClick={() => this.props.onToggleOpen(this.props.venue.id)}>
           <h3>{ this.props.venue.name }</h3>
           <h5>{ this.props.venue.categories[0].name }</h5>
           <p>{ this.props.venue.location.address }</p>
