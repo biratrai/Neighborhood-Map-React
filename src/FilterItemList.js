@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField';
@@ -34,4 +35,9 @@ const FilterItemList = (props) => {
     );
 }
 
+FilterItemList.propTypes = {
+    filterLocation: PropTypes.func.isRequired,
+    animateMarker: PropTypes.func.isRequired,
+    locations: PropTypes.array.isRequired,
+};
 export default FilterItemList;
