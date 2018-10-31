@@ -93,11 +93,20 @@ class AppFrame extends React.Component {
   }
 
   setErrorData = (error) => {
+    let apiValue;
+    if(error.response) {
+      console.log("error.response "+error.response)
+      apiValue = true;
+    } else {
+      console.log("error.response "+error.request)
+      apiValue = false;
+    }
     this.setState(
       {
         hasError : true,
         errorMsg: error,
-        isLoading: false
+        isLoading: false,
+        apiReturned : apiValue,
       });
   }
 
@@ -200,7 +209,7 @@ class AppFrame extends React.Component {
         <main className={ classes.content }>
           <div className={ classes.toolbar } />
           {
-            !this.state.isLoading && !this.state.hasError &&
+            !this.state.isLoading && this.state.apiReturned &&
             <SearchLocation searchLocation={ this.searchLocation }/>
           }
           {/* Main App Component */}
