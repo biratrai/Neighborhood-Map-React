@@ -7,6 +7,11 @@ import { DebounceInput } from 'react-debounce-input';
 // Stateless functional Component that takes user input
 const SearchLocation = ({ searchLocation }) => {
     const handleChange = searchLocation => event => {
+        // If delete by user do nothing
+        if (event.nativeEvent.inputType === "deleteContentBackward") return;
+        if (event.nativeEvent.inputType === "deleteSoftLineBackward") return;
+
+        // If there is some value than call the api to get result
         if(event.target.value)
             searchLocation(event.target.value)
     };
