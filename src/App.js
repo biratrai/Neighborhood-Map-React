@@ -2,17 +2,25 @@ import React, { Component } from 'react';
 import Map from './Map.js';
 import Loader from 'react-loader-spinner'
 import './App.css';
+import Typography from '@material-ui/core/Typography';
 
 class App extends Component {
 
   render() {
     let content;
     if( this.props.hasError ){
-      content = <div className="error" >
-      <h3>{ this.props.errorMsg.message }</h3>
-      <p>{ this.props.errorMsg.response.data.meta.errorDetail }</p>
-      <p>{ "Please search again!" }</p>
-      </div>
+      if (this.props.errorMsg.response) {
+        content = <div className="error" >
+        <h3>{ this.props.errorMsg.message }</h3>
+          <p>{ this.props.errorMsg.response.data.meta.errorDetail }</p> 
+          <p>{ "Please search again!" }</p>
+        </div>
+      } else if (this.props.errorMsg.request) {
+        content = <Typography variant="h5" color="error">
+                    "Couldn't fetch data. Please try again later"
+                  </Typography>
+          
+      }
     } else {
       content = <div>
         <Map locationList = { this.props.locations } 
