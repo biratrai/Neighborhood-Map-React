@@ -23,7 +23,12 @@ const FilterItemList = (props) => {
                     type="search"
                     onChange={ handleChange(props.filterLocation) }
                     />
-            </ListItem>    
+            </ListItem> 
+            { props.locations.length < 1 && 
+                <ListItem >
+                    <ListItemText primary={ "No restaurant to show! "} />
+                </ListItem>
+            }   
             { props.locations.map((venue) =>
                 {   // Return list item; whose onClick animates the marker
                     return <ListItem button onClick={ () => props.animateMarker(true, venue.id) } key={venue.id}>

@@ -107,6 +107,7 @@ class AppFrame extends React.Component {
         errorMsg: error,
         isLoading: false,
         apiReturned : apiValue,
+        filteredLocations: []
       });
   }
 
