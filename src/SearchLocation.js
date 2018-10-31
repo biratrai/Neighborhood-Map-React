@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
 import { DebounceInput } from 'react-debounce-input';
 
