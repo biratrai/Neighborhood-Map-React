@@ -49,10 +49,7 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
-  },
-  typography: {
-    useNextVariants: true,
-  },
+  }
 });
 
 class AppFrame extends React.Component {
@@ -142,6 +139,8 @@ class AppFrame extends React.Component {
   render() {
     const { classes, theme } = this.props;
 
+    // Migration to typography v2 to disable the warning
+    window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
     const drawer = (
       <div>
         <div className={ classes.toolbar } />
@@ -154,6 +153,7 @@ class AppFrame extends React.Component {
     );
 
     return (
+      // Drawer Sample code extracted from https://material-ui.com/demos/drawers/#responsive-drawer
       <div className={ classes.root }>
         <AppBar className={ classes.appBar }>
           <Toolbar>
