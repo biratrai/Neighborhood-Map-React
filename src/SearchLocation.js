@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 import { DebounceInput } from 'react-debounce-input';
 
-// Stateless functional Component
+// Stateless functional Component that takes user input
 const SearchLocation = ({ searchLocation }) => {
     const handleChange = searchLocation => event => {
         if(event.target.value)
