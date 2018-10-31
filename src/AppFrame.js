@@ -137,6 +137,10 @@ class AppFrame extends React.Component {
   }
 
   onToggleOpen = ( venueId ) => {
+    if(venueId === undefined){
+      venueId = ""
+    }
+
     this.setState({
       currentSelected : venueId
     }); 

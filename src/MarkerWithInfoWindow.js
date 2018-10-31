@@ -10,8 +10,8 @@ const MarkerWithInfoWindow = (props) => {
       animation= { props.currentSelected === props.venue.id && props.shouldAnimate? props.animation: null }
     >
       { 
-        (props.currentSelected === props.venue.id) && <InfoWindow >
-        <div onClick={() => props.onToggleOpen(props.venue.id)}>
+        (props.currentSelected === props.venue.id) && <InfoWindow onCloseClick={ props.onToggleOpen }>
+        <div onClick={() => props.onToggleOpen("")}>
           <h3>{ props.venue.name }</h3>
           <h5>{ props.venue.categories[0].name }</h5>
           <p>{ props.venue.location.address }</p>
