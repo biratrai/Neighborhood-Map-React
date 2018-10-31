@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import Map from './Map.js';
-import Loader from 'react-loader-spinner'
 import './App.css';
 import Typography from '@material-ui/core/Typography';
+import { ClipLoader } from 'react-spinners';
+import { css } from 'react-emotion';
 
+const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+`;
 class App extends Component {
 
   render() {
@@ -33,14 +39,13 @@ class App extends Component {
     }
     return (
       <div className="App">
-        { this.props.isLoading &&  <Loader 
-            type="Circles"
-            color="#00BFFF"
-            height="200"	
-            width="200"
-          />   
+        { this.props.isLoading &&  <ClipLoader
+          className={override}
+          sizeUnit={"px"}
+          size={80}
+          color={'#123abc'}/>
         }
-        { content }
+        { !this.props.isLoading && content } 
       </div>
     );
   }
