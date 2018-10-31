@@ -11,7 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import App from './App.js';
 import FilterItemList from './FilterItemList'
-import { getLocationList } from './LocationList.js'
+import { getLocationList } from './LocationApi.js'
 import SearchLocation from './SearchLocation.js';
 
 const drawerWidth = 240;
@@ -74,15 +74,15 @@ class AppFrame extends React.Component {
 
   getData = (response) => {
     if(response.data !== undefined){
-      console.log("seltLocationDATa")
+      console.log("Got data")
       return this.setLocationData(response);
     } else {
+      console.log("Got an error")
       return this.setErrorData(response);
     }
   }
 
   setLocationData = (response) => {
-    console.log("respone => "+response.data.response.geocode.feature.geometry.center.lat)
     this.setState(
       {
         locations : response.data.response.venues,
@@ -105,7 +105,6 @@ class AppFrame extends React.Component {
   }
 
   componentDidMount(){
-    console.log("mount "+ this.state.geometry.lat)
     getLocationList(this.getData, "manhattan")
   }
 
@@ -200,7 +199,11 @@ class AppFrame extends React.Component {
         </Hidden>
         <main className={ classes.content }>
           <div className={ classes.toolbar } />
-          <SearchLocation searchLocation={ this.searchLocation }/>
+          {
+            !this.state.isLoading && !this.state.hasError &&
+            <SearchLocation searchLocation={ this.searchLocation }/>
+          }
+          
           <App hasError={ this.state.hasError } 
             locations= { this.state.filteredLocations } 
             apiReturned= { this.state.apiReturned} 
