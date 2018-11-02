@@ -13,6 +13,9 @@ import App from './App.js';
 import FilterItemList from './FilterItemList'
 import { getLocationList } from './LocationApi.js'
 import SearchLocation from './SearchLocation.js';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Avatar from '@material-ui/core/Avatar';
+import FourSquareLogo from './images/FourSquareLogo.png'
 
 const drawerWidth = 240;
 
@@ -52,7 +55,14 @@ const styles = theme => ({
   },
   grow: {
     flexGrow: 1,
-  }
+  },
+  avatar: {
+    margin: 10,
+  },
+  bigAvatar: {
+    width: 60,
+    height: 60,
+  },
 });
 
 class AppFrame extends React.Component {
@@ -185,11 +195,7 @@ class AppFrame extends React.Component {
             <Typography variant="h6" color="inherit" noWrap className={classes.grow}>
               Neighborhood Map
             </Typography>
-            <Typography
-                  color="inherit"
-                >
-                Powered by Foursquare Api
-            </Typography>
+            <Avatar src={FourSquareLogo} className={classes.avatar}/>
           </Toolbar>
         </AppBar>
         <Hidden mdUp>
@@ -219,7 +225,7 @@ class AppFrame extends React.Component {
             { drawer }
           </Drawer>
         </Hidden>
-        <main className={ classes.content }>
+        <main className={ classes.content } style={{paddingTop:'0px'}}>
           <div className={ classes.toolbar } />
           {
             !this.state.isLoading && this.state.apiReturned &&
