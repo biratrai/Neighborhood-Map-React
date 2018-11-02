@@ -49,6 +49,9 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
+  },
+  grow: {
+    flexGrow: 1,
   }
 });
 
@@ -179,8 +182,13 @@ class AppFrame extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
+            <Typography variant="h6" color="inherit" noWrap className={classes.grow}>
               Neighborhood Map
+            </Typography>
+            <Typography
+                  color="inherit"
+                >
+                Powered by Foursquare Api
             </Typography>
           </Toolbar>
         </AppBar>
