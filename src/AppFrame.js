@@ -13,7 +13,7 @@ import App from './App.js';
 import FilterItemList from './FilterItemList'
 import { getLocationList } from './LocationApi.js'
 import SearchLocation from './SearchLocation.js';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import PoweredByFourSquareLogo from './images/foursquare.png';
 import Avatar from '@material-ui/core/Avatar';
 import FourSquareLogo from './images/FourSquareLogo.png'
 
@@ -166,7 +166,11 @@ class AppFrame extends React.Component {
     window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
     const drawer = (
       <div>
-        <div className={ classes.toolbar } />
+        <div className={ classes.toolbar } style={{ backgroundImage: `url(${ PoweredByFourSquareLogo })`,
+          backgroundRepeat:   'no-repeat',
+          backgroundSize: 'contain',
+          backgroundPosition: 'center center' }}
+        color="inherit"/>
         <Divider />
         <FilterItemList locations={ this.state.filteredLocations } 
           filterLocation={ this.filterLocation }
