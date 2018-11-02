@@ -58,11 +58,7 @@ const styles = theme => ({
   },
   avatar: {
     margin: 10,
-  },
-  bigAvatar: {
-    width: 60,
-    height: 60,
-  },
+  }
 });
 
 class AppFrame extends React.Component {
