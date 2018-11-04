@@ -1,7 +1,7 @@
 # Neighborhood-Map-React
 
 ---
-![Demo Screen] (src/images/app-screen-shot.png "Demo Screen")
+![Demo Screen](src/images/app-screen-shot.png "Demo Screen")
 ## What is the Project about:
 
 This app provides a listing of Restaurants in Detroit, Michigan. The project is built for the Udacity Front End WebNanodegree Program. The application is React-based using google Maps Api.
@@ -84,8 +84,8 @@ Choose the Maps platform and enable "Google Maps Platform". To protect your API 
 - [React API](https://facebook.github.io/react/docs/react-api.html)
 - [Foursquare API - Venue Search](https://developer.foursquare.com/docs/api/venues/search)
 - [Foursquare API - Venue Details](https://developer.foursquare.com/docs/api/venues/details)
-- [Material UI - React Components] (https://github.com/mui-org/material-ui)
-- [React spinner] (https://github.com/davidhu2000/react-spinners)
+- [Material UI - React Components](https://github.com/mui-org/material-ui)
+- [React spinner](https://github.com/davidhu2000/react-spinners)
 
 ### Udacity Resources:
 
