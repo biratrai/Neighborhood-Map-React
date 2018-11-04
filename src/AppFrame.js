@@ -22,12 +22,20 @@ const drawerWidth = 240;
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 800,
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
     display: 'flex',
     width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      height: 600,
+    },
+    [theme.breakpoints.up('md')]: {
+      height: 700,
+    },
+    [theme.breakpoints.up('lg')]: {
+      height: 750,
+    },
   },
   appBar: {
     position: 'absolute',
@@ -47,6 +55,8 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       position: 'relative',
     },
+    maxHeight: '700px',
+    overflow: 'auto'
   },
   content: {
     flexGrow: 1,
