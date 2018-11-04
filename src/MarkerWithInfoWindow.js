@@ -12,9 +12,9 @@ const MarkerWithInfoWindow = (props) => {
       { 
         (props.currentSelected === props.venue.id) && <InfoWindow onCloseClick={ props.onToggleOpen }>
         <div onClick={() => props.onToggleOpen("")}>
-          <h3>{ props.venue.name }</h3>
-          <h5>{ props.venue.categories[0].name }</h5>
-          <p>{ props.venue.location.address }</p>
+          <h3>{ props.venue.name? props.venue.name : "Name Unavailable" }</h3>
+          <h5>{ props.venue.categories[0]? props.venue.categories[0].name : "Category unavailable"}</h5>
+          <p>{ props.venue.location.address? props.venue.location.address: "Address unavailable" }</p>
        </div>
       </InfoWindow>}
     </Marker>
