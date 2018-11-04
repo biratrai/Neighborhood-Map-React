@@ -15,7 +15,8 @@ const FilterItemList = (props) => {
 
     return (
         // List of restaurants
-        <List>
+        <List style={{maxHeight: '600px',
+        overflow: 'auto'}}>
             <ListItem button>
                 <TextField
                     id="standard-search"
@@ -31,7 +32,7 @@ const FilterItemList = (props) => {
             }   
             { props.locations.map((venue) =>
                 {   // Return list item; whose onClick animates the marker
-                    return <ListItem button onClick={ () => props.animateMarker(true, venue.id) } key={venue.id} style={{overflow: 'auto'}}>
+                    return <ListItem button onClick={ () => props.animateMarker(true, venue.id) } key={venue.id} >
                                 <ListItemText primary={venue.name} />
                             </ListItem>
                 }

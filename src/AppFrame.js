@@ -55,8 +55,6 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       position: 'relative',
     },
-    maxHeight: '700px',
-    overflow: 'auto'
   },
   content: {
     flexGrow: 1,
