@@ -178,7 +178,8 @@ class AppFrame extends React.Component {
           backgroundRepeat:   'no-repeat',
           backgroundSize: 'contain',
           backgroundPosition: 'center center' }}
-        color="inherit"/>
+          alt={"FourSquare Logo"}
+          color="inherit"/>
         <Divider />
         <FilterItemList locations={ this.state.filteredLocations } 
           filterLocation={ this.filterLocation }
@@ -203,7 +204,7 @@ class AppFrame extends React.Component {
             <Typography variant="h6" color="inherit" noWrap className={classes.grow}>
               Neighborhood Map
             </Typography>
-            <Avatar src={FourSquareLogo} className={classes.avatar}/>
+            <Avatar src={FourSquareLogo} className={classes.avatar} alt={"FourSquare Logo"}/>
           </Toolbar>
         </AppBar>
         <Hidden mdUp>

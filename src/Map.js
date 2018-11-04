@@ -41,6 +41,7 @@ const GoogleMapBox = withGoogleMap(props => (
   <GoogleMap
     center = { { lat: props.geometry.lat, lng: props.geometry.lng } }
     defaultZoom = { 13 }
+    aria-label={ "Google Map"}
    >
    {
      props.locationList.map((venue) => {
