@@ -17,7 +17,7 @@ const SearchLocation = ({ searchLocation }) => {
     };
     return (
         <List>
-            <ListItem button>
+            <ListItem button role="button">
                 <DebounceInput
                     minLength= { 2 }
                     debounceTimeout={ 400 }
