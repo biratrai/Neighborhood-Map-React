@@ -1,7 +1,7 @@
 # Neighborhood-Map-React
 
 ---
-[App Layout](https://github.com/biratrai/Neighborhood-Map-React/blob/master/src/images/app-screeb-shot.png)
+![Demo Screen] (src/images/app-screen-shot.png "Demo Screen")
 ## What is the Project about:
 
 This app provides a listing of Restaurants in Detroit, Michigan. The project is built for the Udacity Front End WebNanodegree Program. The application is React-based using google Maps Api.
