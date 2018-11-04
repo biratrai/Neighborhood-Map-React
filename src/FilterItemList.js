@@ -31,7 +31,7 @@ const FilterItemList = (props) => {
             }   
             { props.locations.map((venue) =>
                 {   // Return list item; whose onClick animates the marker
-                    return <ListItem button onClick={ () => props.animateMarker(true, venue.id) } key={venue.id}>
+                    return <ListItem button onClick={ () => props.animateMarker(true, venue.id) } key={venue.id} style={{overflow: 'auto'}}>
                                 <ListItemText primary={venue.name} />
                             </ListItem>
                 }
