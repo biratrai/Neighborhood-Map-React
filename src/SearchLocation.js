@@ -18,6 +18,7 @@ const SearchLocation = ({ searchLocation }) => {
     return (
         <List>
             <ListItem button role="button">
+                <label>Search by city name: 
                 <DebounceInput
                     minLength= { 2 }
                     debounceTimeout={ 400 }
@@ -26,6 +27,7 @@ const SearchLocation = ({ searchLocation }) => {
                     style={{flex: "1", fontSize: "1.25em"}}
                     onChange={ handleChange(searchLocation) }
                     />
+                </label>
             </ListItem>    
         </List>
     );
