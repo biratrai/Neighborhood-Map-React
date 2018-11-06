@@ -9,7 +9,6 @@ class Map extends Component {
     return(
       <MarkerWithInfoWindow 
         venue={ venue } 
-        // isOpen = { isOpen }
         onToggleOpen = { onToggleOpen }
         key={ venue.location.address }
         shouldAnimate={ shouldAnimate }
