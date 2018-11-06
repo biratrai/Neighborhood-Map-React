@@ -28,7 +28,6 @@ const {
 
 MarkerWithInfoWindow.propTypes = {
   venue: PropTypes.object.isRequired,
-  // isOpen: PropTypes.string.isRequired,
   onToggleOpen: PropTypes.func.isRequired,
   shouldAnimate: PropTypes.bool.isRequired,
   animation: PropTypes.number.isRequired,
