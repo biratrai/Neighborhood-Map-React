@@ -32,8 +32,8 @@ const FilterItemList = (props) => {
             }   
             { props.locations.map((venue) =>
                 {   // Return list item; whose onClick animates the marker
-                    return <ListItem button onClick={ () => props.animateMarker(true, venue.id) } key={venue.id} >
-                                <ListItemText primary={venue.name} />
+                    return <ListItem button onClick={ () => props.onToggleOpen(venue.id) } key={venue.id} >
+                                <ListItemText primary={ venue.name } />
                             </ListItem>
                 }
             )}
@@ -43,7 +43,7 @@ const FilterItemList = (props) => {
 
 FilterItemList.propTypes = {
     filterLocation: PropTypes.func.isRequired,
-    animateMarker: PropTypes.func.isRequired,
+    onToggleOpen: PropTypes.func.isRequired,
     locations: PropTypes.array.isRequired,
 };
 export default FilterItemList;
