@@ -72,6 +72,7 @@ const styles = theme => ({
 class AppFrame extends React.Component {
   constructor(props){
     super(props);
+    this.onToggleOpen = this.onToggleOpen.bind(this);
     this.state = {
       locations: [],
       apiReturned: false,
@@ -147,10 +148,11 @@ class AppFrame extends React.Component {
   }
 
   animateMarker = (animate, venueId) => {
-    this.setState({ shouldAnimate: animate})
-    setTimeout(() => this.setState({ shouldAnimate: false }), 2100)
-    this.onToggleOpen( venueId )
-    this.handleDrawerToggle()
+    if(venueId !== this.state.currentSelected){
+      this.setState({ shouldAnimate: animate})
+      setTimeout(() => this.setState({ shouldAnimate: false}), 2100)
+      this.handleDrawerToggle()
+    }
   }
 
   onToggleOpen = ( venueId ) => {
@@ -158,6 +160,7 @@ class AppFrame extends React.Component {
       venueId = ""
     }
 
+    this.animateMarker(true, venueId)
     this.setState({
       currentSelected : venueId
     }); 
@@ -183,8 +186,8 @@ class AppFrame extends React.Component {
         <Divider />
         <FilterItemList locations={ this.state.filteredLocations } 
           filterLocation={ this.filterLocation }
-          shouldAnimate={ this.state.shouldAnimate}
-          animateMarker={ this.animateMarker }/>
+          shouldAnimate={ this.state.shouldAnimate }
+          onToggleOpen={ this.onToggleOpen }/>
       </div>
     );
 
